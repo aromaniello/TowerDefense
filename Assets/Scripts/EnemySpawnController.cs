@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawnController : MonoBehaviour {
 	[SerializeField] private WavesData _wavesData;
@@ -8,6 +9,8 @@ public class EnemySpawnController : MonoBehaviour {
 	[SerializeField] private GameObject _weakEnemyPrefab;
 	[SerializeField] private GameObject _midEnemyPrefab;
 	[SerializeField] private GameObject _heavyEnemyPrefab;
+	[SerializeField] private float _minimumSpawnDelay = 1;
+	[SerializeField] private float _maximumSpawnDelay = 3;
 	private int _waveNumber;
 
 	private void Start() {
@@ -20,7 +23,9 @@ public class EnemySpawnController : MonoBehaviour {
 			StartCoroutine(SpawnEnemies(_wavesData.Waves[_waveNumber].MidEnemies, _midEnemyPrefab));
 			StartCoroutine(SpawnEnemies(_wavesData.Waves[_waveNumber].HeavyEnemies, _heavyEnemyPrefab));
 
-			yield return new WaitForSeconds(5);
+			while (GameManager.Instance.EnemyCount > 0) {
+				yield return null;
+			}
 			_waveNumber += 1;
 		}
 	}
@@ -28,7 +33,7 @@ public class EnemySpawnController : MonoBehaviour {
 	IEnumerator SpawnEnemies(int enemyAmount, GameObject enemyPrefab) {
 		for (int i = 0; i < enemyAmount; i++) {
 			Instantiate(enemyPrefab, _spawnPoint.position, Quaternion.identity);
-			yield return new WaitForSeconds(1);
+			yield return new WaitForSeconds(Random.Range(_minimumSpawnDelay, _maximumSpawnDelay));
 		}
 	}
 }

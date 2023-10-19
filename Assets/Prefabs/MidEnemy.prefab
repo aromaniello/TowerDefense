@@ -122,6 +122,8 @@ GameObject:
   - component: {fileID: 6876881730848402752}
   - component: {fileID: 4360164079564743926}
   - component: {fileID: 3974529463476095861}
+  - component: {fileID: 6856547995891737107}
+  - component: {fileID: -2574201706241122600}
   m_Layer: 0
   m_Name: MidEnemy
   m_TagString: Untagged
@@ -210,6 +212,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damagePower: 25
   _tagToCompare: Player
+  OnTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -2574201706241122600}
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
+        m_MethodName: DestroyWithDelay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &3974529463476095861
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -237,6 +254,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6856547995891737107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3072943440757099016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cafa31941f03f948865d8bc5b762cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2574201706241122600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3072943440757099016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b4631e9a0ebf64893a7b5dd8fe3c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destroyDelay: 0.1
 --- !u!1 &6224353696454230620
 GameObject:
   m_ObjectHideFlags: 0
