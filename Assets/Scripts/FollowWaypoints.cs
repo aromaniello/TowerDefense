@@ -5,6 +5,7 @@ using UnityEngine;
 public class FollowWaypoints : MonoBehaviour {
 	[SerializeField] private string _pathName;
 	[SerializeField] List<Vector3> _waypointsPositions = new List<Vector3>();
+	[SerializeField] float _distanceThreshold = 0.3f;
 	private int _currentWaypoint = 0;
 
 	private void Start() {
@@ -26,7 +27,7 @@ public class FollowWaypoints : MonoBehaviour {
 
 		float distance = Vector3.Distance(transform.position, _waypointsPositions[_currentWaypoint]);
 
-		while (distance > 0.5f) {
+		while (distance > _distanceThreshold) {
 			transform.position = Vector3.MoveTowards(transform.position, _waypointsPositions[_currentWaypoint], Time.deltaTime);
 			distance = Vector3.Distance(transform.position, _waypointsPositions[_currentWaypoint]);
 			yield return null;
