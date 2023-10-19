@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour {
 		set => _enemyCount = value;
 	}
 
+	public float GameSpeed {
+		get => _gameSpeed;
+		set => _gameSpeed = value;
+	}
+
 	public static GameManager Instance {
 		get => _gameManager;
 		set => _gameManager = value;

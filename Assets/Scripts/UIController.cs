@@ -14,4 +14,12 @@ public class UIController : MonoBehaviour
 			_loseScreen.SetActive(true);
 		}
 	}
+
+	public void SliderValueChanged(float value) {
+		GameManager.Instance.GameSpeed = value;
+	}
+
+	public void RetryGame(string sceneName) {
+		SceneLoader.LoadScene(sceneName);
+	}
 }
