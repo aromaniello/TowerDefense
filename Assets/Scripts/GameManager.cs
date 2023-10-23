@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
 		get => _gameOver;
 		set {
 			_gameOver = value;
+			CurrentGameState = GameState.GameOver;
 			OnGameOver?.Invoke();
 		}
 	}
@@ -36,6 +37,18 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance {
 		get => _gameManager;
 		set => _gameManager = value;
+	}
+
+	public enum GameState {
+		Playing,
+		GameOver
+	}
+
+	private GameState _currentGameState;
+
+	public GameState CurrentGameState {
+		get => _currentGameState;
+		set => _currentGameState = value;
 	}
 
 	private void Awake() {

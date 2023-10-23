@@ -12,7 +12,7 @@ public class EnemySpawnController : MonoBehaviour {
 	[SerializeField] private GameObject _heavyEnemyPrefab;
 	[SerializeField] private float _minimumSpawnDelay = 1;
 	[SerializeField] private float _maximumSpawnDelay = 3;
-	[SerializeField] private float _waitTimeBetweenWaves = 5;
+	// [SerializeField] private float _waitTimeBetweenWaves = 5;
 	[SerializeField] private UnityEvent OnWavesEnded;
 	private int _waveNumber;
 
@@ -21,7 +21,7 @@ public class EnemySpawnController : MonoBehaviour {
 	}
 
 	IEnumerator CreateNewEnemyWave() {
-		while (_waveNumber < _wavesData.Waves.Length) {
+		while (_waveNumber < _wavesData.Waves.Length && GameManager.Instance.CurrentGameState == GameManager.GameState.Playing) {
 			StartCoroutine(SpawnEnemies(_wavesData.Waves[_waveNumber].WeakEnemies, _weakEnemyPrefab));
 			StartCoroutine(SpawnEnemies(_wavesData.Waves[_waveNumber].MidEnemies, _midEnemyPrefab));
 			StartCoroutine(SpawnEnemies(_wavesData.Waves[_waveNumber].HeavyEnemies, _heavyEnemyPrefab));
