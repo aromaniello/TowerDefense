@@ -279,6 +279,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destroyDelay: 0.1
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6224353696454230620
 GameObject:
   m_ObjectHideFlags: 0
